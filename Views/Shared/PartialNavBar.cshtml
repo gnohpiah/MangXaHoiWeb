@@ -1,0 +1,72 @@
+﻿@using MangXaHoiWeb.Models;
+@model NguoiDung;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<nav>
+    <div class="nav-left">
+        <img src="~/assets/images/logo.png" class="logo">
+        <ul>
+            <li><img src="~/assets/images/notification.png"></li>
+            <li><img src="~/assets/images/inbox.png"></li>
+            <li><img src="~/assets/images/video.png"></li>
+        </ul>
+    </div>
+    <div class="nav-right">
+
+        <div class="search-box">
+            <img src="~/assets/images/search.png">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="nav-user-icon online" onclick="settingsMenuToggle()">
+            <img src="~/images/profile/@Html.DisplayFor(modelItem => Model.AnhDaiDien)">
+        </div>
+
+    </div>
+    <!--------------- settings-menu ----------------->
+    <div class="settings-menu">
+
+        <div id="dark-btn">
+            <span></span>
+        </div>
+
+        <div class="settings-menu-inner">
+            <div class="user-profile">
+                <img src="~/images/profile/@Html.DisplayFor(modelItem => Model.AnhDaiDien)">
+                <div>
+                    <p>@Model.TenNguoiDung</p>
+                    <a asp-controller="Profile" asp-action="IndexProfile" asp-route-maNguoiDung="@Model.MaNguoiDung.ToString().Trim()">See your profile</a>
+                </div>
+            </div>
+            <hr>
+            <div class="user-profile">
+                <img src="~/assets/images/feedback.png">
+                <div>
+                    <p>Give Feedback</p>
+                    <a href="#">Help us to improve the new design</a>
+                </div>
+            </div>
+            <hr>
+            <div class="settings-links">
+                <img src="~/assets/images/setting.png" class="settings-icon">
+                <a href="#">Settings & Privacy <img src="~/assets/images/arrow.png" width="10px"></a>
+            </div>
+            <div class="settings-links">
+                <img src="~/assets/images/help.png" class="settings-icon">
+                <a href="#">Help & Support <img src="~/assets/images/arrow.png" width="10px"></a>
+            </div>
+            <div class="settings-links">
+                <img src="~/assets/images/display.png" class="settings-icon">
+                <a href="#">Display & Accessibility <img src="~/assets/images/arrow.png" width="10px"></a>
+            </div>
+            <div class="settings-links">
+                <img src="~/assets/images/logout.png" class="settings-icon">
+                <a asp-controller="Access" asp-action="Logout">Logout <img src="~/assets/images/arrow.png" width="10px"></a>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</nav>

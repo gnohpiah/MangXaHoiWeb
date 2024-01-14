@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MangXaHoiWeb.Models.NguoiDung>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên Người Dùng
+            </th>
+            <th>
+                Giới Tính
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Số Điện Thoại
+            </th>
+            <th>
+                Công Việc
+            </th>
+            <th>
+                Học Vấn
+            </th>
+            <th>
+                Xóa Người Dùng Vi Phạm
+            </th>   
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNguoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CongViec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HocVan)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-maNguoiDung="@item.MaNguoiDung">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

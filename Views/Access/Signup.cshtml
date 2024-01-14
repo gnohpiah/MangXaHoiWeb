@@ -1,0 +1,165 @@
+﻿@model MangXaHoiWeb.ViewModels.SignUp
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h4 {
+            color: #333;
+        }
+
+        .row {
+            margin-top: 20px;
+        }
+
+        .col-md-4 {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 20%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .image-preview {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+
+<h4>Đăng Ký</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method= "post" asp-action="Signup" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaNguoiDung" class="control-label">Tên Đăng Nhập</label>
+                <input asp-for="MaNguoiDung" class="form-control" />
+                <span asp-validation-for="MaNguoiDung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MatKhau" class="control-label">Mật Khẩu</label>
+                <input asp-for="MatKhau" class="form-control" />
+                <span asp-validation-for="MatKhau" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenNguoiDung" class="control-label">Tên</label>
+                <input asp-for="TenNguoiDung" class="form-control" />
+                <span asp-validation-for="TenNguoiDung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GioiTinh" class="control-label">Giới Tính</label>
+                <input asp-for="GioiTinh" class="form-control" />
+                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label">Địa Chỉ</label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoDienThoai" class="control-label">Số Điện Thoại</label>
+                <input asp-for="SoDienThoai" class="form-control" />
+                <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongViec" class="control-label">Công Việc</label>
+                <input asp-for="CongViec" class="form-control" />
+                <span asp-validation-for="CongViec" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HocVan" class="control-label">Học Vấn</label>
+                <input asp-for="HocVan" class="form-control" />
+                <span asp-validation-for="HocVan" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                    <label asp-for="Avatar" class="control-label">Ảnh Đại Diện</label>
+                    <input asp-for="Avatar" type="file" class="form-control" onchange="previewImage(this)" />
+                    <span asp-validation-for="Avatar" class="text-danger"></span>
+                    <div class="image-preview" id="avatarPreview"></div>
+                </div>
+            <div class="form-group">
+                <label asp-for="Quote" class="control-label">Câu Nói Yêu Thích</label>
+                <input asp-for="Quote" class="form-control" />
+                <span asp-validation-for="Quote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<script>
+    function previewImage(input) {
+        var preview = document.getElementById('avatarPreview');
+        var file = input.files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.style.backgroundImage = 'url(' + reader.result + ')';
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.backgroundImage = '';
+        }
+    }
+</script>
+
+</body>
+</html>

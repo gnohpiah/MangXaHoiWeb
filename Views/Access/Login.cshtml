@@ -1,0 +1,49 @@
+﻿@using MangXaHoiWeb.Models;
+@model NguoiDung;
+@{
+    Layout = null;
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/assets/login.css">
+    <title>Document</title>
+</head>
+<body>
+    @* <form action=""> *@
+    @using(Html.BeginForm("Login", "Access", FormMethod.Post))
+    {
+        @*<input type="text" placeholder="Email or Phone Number"> *@
+        @Html.TextBoxFor(x=>x.MaNguoiDung, new {placeholder="Email or Phone Number", required="required", autofocus="autofocus"});
+        @* <input type="password" placeholder="Password"> *@
+        @Html.TextBoxFor(x=>x.MatKhau, new {placeholder="Password", required="required"})
+        <br>
+        <button type="submit">Log In</button>
+        <br>
+        <a class="f-pws">Forget Password</a>
+        <div class="line"></div>
+        <br>
+        <button class="btn2">
+            <a href="@Url.Action("SignUp", "Access")">Create New Account</a>
+        </button>
+        <style>
+            .btn2 a {
+                text-decoration: none; /* Remove underline */
+                color: inherit; /* Inherit color from parent (button) */
+            }
+        </style>
+        @*</form>*@
+    }
+    <div class="f-container">
+        <img src="~/assets/images/facebook.png" alt="facebook">
+        <p>Connect with friends and the world around you on Facebook</p>
+    </div>
+
+    <div class="sub-link">
+        <h3><a href="">Create a page</a> for a celebrity, band or business</h3>
+    </div>
+</body>
+</html>

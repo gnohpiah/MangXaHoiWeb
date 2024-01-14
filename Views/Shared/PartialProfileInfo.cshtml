@@ -1,0 +1,12 @@
+﻿@using MangXaHoiWeb.Models;
+@model NguoiDung;
+<div class="profile-intro">
+    <h3>Intro</h3>
+    <p class="intro-text">@Model.Quote<img src="~/assets/images/feeling.png"></p>
+    <hr>
+    <ul>
+        <li><img src="~/assets/images/profile-job.png"> @Model.CongViec</li>
+        <li><img src="~/assets/images/profile-study.png">@Model.HocVan</li>
+        <li><img src="~/assets/images/profile-home.png">@Model.DiaChi</li>
+    </ul>
+</div>

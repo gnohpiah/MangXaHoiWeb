@@ -1,0 +1,135 @@
+﻿@model MangXaHoiWeb.ViewModels.BaiVietUpload
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CreateBaiViet</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h4 {
+            color: #333;
+        }
+
+        .row {
+            margin-top: 20px;
+        }
+
+        .col-md-4 {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 50%;
+            padding: 8px;
+            box-sizing: border-box;
+            word-wrap: break-word; /* hoặc overflow-wrap: break-word; */
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        img.preview-image {
+            max-width: 100%;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h4>Tạo Bài Viết</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" asp-action="CreateBaiViet" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="NoiDung" class="control-label">Content</label>
+                    <textarea asp-for="NoiDung" class="form-control" style="width: 40%; resize: vertical; overflow-y: auto;"></textarea>
+                    <span asp-validation-for="NoiDung" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" asp-for="MaNguoiDung" value="@ViewBag.MaNguoiDung" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Photo" class="control-label">Photo</label>
+                    <input asp-for="Photo" type="file" class="form-control" onchange="previewImage(this)" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                    <img id="imagePreview" class="preview-image" src="#" alt="Preview" style="display:none;" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    <script>
+        function previewImage(input) {
+            var preview = document.getElementById('imagePreview');
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

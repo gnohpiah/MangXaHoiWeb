@@ -1,0 +1,26 @@
+﻿@using MangXaHoiWeb.Models;
+@model NguoiDung;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="profile-details">
+    <div class="pd-left">
+        <div class="pd-row">
+            <img src="~/images/profile/@Html.DisplayFor(modelItem => Model.AnhDaiDien)" class="pd-images">
+            <div>
+                <h3>@Model.TenNguoiDung</h3>
+                <p>120 Friends - 20 mutual</p>
+                <img src="~/assets/images/member-1.png">
+                <img src="~/assets/images/member-2.png">
+                <img src="~/assets/images/member-3.png">
+                <img src="~/assets/images/member-4.png">
+            </div>
+        </div>
+    </div>
+    <div class="pd-right">
+
+        <button type="button"><img src="~/assets/images/add-friends.png"> Friends</button>
+        <button type="button"><img src="~/assets/images/message.png"> Message</button>
+        <br>
+        <a href=""><img src="~/assets/images/more.png" alt=""></a>
+    </div>
+</div>

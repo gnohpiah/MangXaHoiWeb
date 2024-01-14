@@ -1,0 +1,111 @@
+﻿@using MangXaHoiWeb.Models;
+@model NguoiDung;
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Profile";
+    //Layout = "~/Views/Shared/_LayoutProfile.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using static MangXaHoiWeb.ViewComponents.BaiVietViewComponent;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialBook</title>
+    <link rel="stylesheet" href="~/assets/style.css">
+    <script src="https://kit.fontawesome.com/0d09b8cf60.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    @{
+        Html.RenderPartial("PartialNavBar");
+    }
+    <!------------------- profile page ----------------->
+    <div class="profile-container">
+        <img src="~/assets/images/cover.png" class="cover-img">
+        @{
+            Html.RenderPartial("PartialHeadProfile");
+        }
+        <div class="profile-info">
+            <div class="info-col">
+
+
+                @{
+                    Html.RenderPartial("PartialProfileInfo");
+                }
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Photos</h3>
+                        <a href="">All Photos</a>
+                    </div>
+
+                    <div class="photo-box">
+                        <div><img src="~/assets/images/photo1.png"></div>
+                        <div><img src="~/assets/images/photo2.png"></div>
+                        <div><img src="~/assets/images/photo3.png"></div>
+                        <div><img src="~/assets/images/photo4.png"></div>
+                        <div><img src="~/assets/images/photo5.png"></div>
+                    </div>
+                </div>
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Friends</h3>
+                        <a href="">All Friends</a>
+                    </div>
+                    <p>120 (10 mutual)</p>
+                    <div class="friends-box">
+                        <div><img src="~/assets/images/member-1.png"><p>Josep N</p></div>
+                        <div><img src="~/assets/images/member-2.png"><p>Nathan N</p></div>
+                        <div><img src="~/assets/images/member-3.png"><p>George D</p></div>
+                        <div><img src="~/assets/images/member-4.png"><p>Francis L</p></div>
+                        <div><img src="~/assets/images/member-5.png"><p>Anthony E</p></div>
+                        <div><img src="~/assets/images/member-6.png"><p>Michael A</p></div>
+                        <div><img src="~/assets/images/member-7.png"><p>Edward M</p></div>
+                        <div><img src="~/assets/images/member-8.png"><p>Bradon C</p></div>
+                        <div><img src="~/assets/images/member-9.png"><p>James Doe</p></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="post-col">
+                <div class="write-post-container">
+                    <div class="user-profile">
+                        <img src="~/images/profile/@Model.AnhDaiDien">
+                        <div>
+                            <p>@Model.TenNguoiDung</p>
+                            <small>Public <i class="fa-solid fa-caret-down"></i></small>
+                        </div>
+                    </div>
+
+                    <div class="post-input-container">
+                        <textarea rows="3" placeholder="What's on your mind, John"></textarea>
+                        <div class="add-post-links">
+                            <a asp-controller="Profile" asp-action="CreateBaiViet" asp-route-maNguoiDung="@Model.MaNguoiDung.ToString().Trim()">Tạo Bài Viết Mới</a>
+                            <a href="#"><img src="~/assets/images/photo.png"> Photo/Video</a>
+                            <a href="#"><img src="~/assets/images/feeling.png"> Felling/Activity</a>
+                        </div>
+
+                    </div>
+
+                </div>
+                @await Component.InvokeAsync("BaiViet",new {maNguoiDung = Model.MaNguoiDung})
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="footer">
+        <p>Copyright 2023 - Easy Tutorials Youtube Channel</p>
+    </div>
+    <script src="~/assets/script.js"></script>
+</body>
+</html>
+
+

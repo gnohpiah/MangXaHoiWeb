@@ -1,0 +1,130 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using static MangXaHoiWeb.ViewComponents.BaiVietViewComponent;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialBook</title>
+    <link rel="stylesheet" href="~/assets/style.css">
+    <script src="https://kit.fontawesome.com/0d09b8cf60.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    @{
+        Html.RenderPartial("PartialNavBar");
+    }
+    <!------------------- profile page ----------------->
+    <div class="profile-container">
+        <img src="~/assets/images/cover.png" class="cover-img">
+        <div class="profile-details">
+            <div class="pd-left">
+                <div class="pd-row">
+                    <img src="~/assets/images/profile.png" class="pd-images">
+                    <div>
+                        <h3>Jack Nicholson</h3>
+                        <p>120 Friends - 20 mutual</p>
+                        <img src="~/assets/images/member-1.png">
+                        <img src="~/assets/images/member-2.png">
+                        <img src="~/assets/images/member-3.png">
+                        <img src="~/assets/images/member-4.png">
+                    </div>
+                </div>
+            </div>
+            <div class="pd-right">
+
+                <button type="button"><img src="~/assets/images/add-friends.png"> Friends</button>
+                <button type="button"><img src="~/assets/images/message.png"> Message</button>
+                <br>
+                <a href=""><img src="~/assets/images/more.png" alt=""></a>
+            </div>
+        </div>
+
+        <div class="profile-info">
+            <div class="info-col">
+
+
+                <div class="profile-intro">
+                    <h3>Intro</h3>
+                    <p class="intro-text">Believe in yourself and you can do unbelievable things. <img src="~/assets/images/feeling.png"></p>
+                    <hr>
+                    <ul>
+                        <li><img src="~/assets/images/profile-job.png"> Director at 99media Ltd</li>
+                        <li><img src="~/assets/images/profile-study.png">Studied at Amity University</li>
+                        <li><img src="~/assets/images/profile-study.png">Went to DPS Delhi</li>
+                        <li><img src="~/assets/images/profile-home.png">Lives in Bangalore, India</li>
+                        <li><img src="~/assets/images/profile-location.png">From Bangalore, India</li>
+                    </ul>
+                </div>
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Photos</h3>
+                        <a href="">All Photos</a>
+                    </div>
+
+                    <div class="photo-box">
+                        <div><img src="~/assets/images/photo1.png"></div>
+                        <div><img src="~/assets/images/photo2.png"></div>
+                        <div><img src="~/assets/images/photo3.png"></div>
+                        <div><img src="~/assets/images/photo4.png"></div>
+                        <div><img src="~/assets/images/photo5.png"></div>
+                    </div>
+                </div>
+                <div class="profile-intro">
+                    <div class="title-box">
+                        <h3>Friends</h3>
+                        <a href="">All Friends</a>
+                    </div>
+                    <p>120 (10 mutual)</p>
+                    <div class="friends-box">
+                        <div><img src="~/assets/images/member-1.png"><p>Josep N</p></div>
+                        <div><img src="~/assets/images/member-2.png"><p>Nathan N</p></div>
+                        <div><img src="~/assets/images/member-3.png"><p>George D</p></div>
+                        <div><img src="~/assets/images/member-4.png"><p>Francis L</p></div>
+                        <div><img src="~/assets/images/member-5.png"><p>Anthony E</p></div>
+                        <div><img src="~/assets/images/member-6.png"><p>Michael A</p></div>
+                        <div><img src="~/assets/images/member-7.png"><p>Edward M</p></div>
+                        <div><img src="~/assets/images/member-8.png"><p>Bradon C</p></div>
+                        <div><img src="~/assets/images/member-9.png"><p>James Doe</p></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="post-col">
+                <div class="write-post-container">
+                    <div class="user-profile">
+                        <img src="~/assets/images/profile-pic.png">
+                        <div>
+                            <p>John Nicholson</p>
+                            <small>Public <i class="fa-solid fa-caret-down"></i></small>
+                        </div>
+                    </div>
+
+                    <div class="post-input-container">
+                        <textarea rows="3" placeholder="What's on your mind, John"></textarea>
+                        <div class="add-post-links">
+                            <a href="#"><img src="~/assets/images/live-video.png"> Like Video</a>
+                            <a href="#"><img src="~/assets/images/photo.png"> Photo/Video</a>
+                            <a href="#"><img src="~/assets/images/feeling.png"> Felling/Activity</a>
+                        </div>
+
+                    </div>
+
+                </div>
+                @await Component.InvokeAsync("BaiViet",new {maNguoiDung = "phog"})
+   
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="footer">
+        <p>Copyright 2023 - Easy Tutorials Youtube Channel</p>
+    </div>
+    <script src="~/assets/script.js"></script>
+</body>
+</html>

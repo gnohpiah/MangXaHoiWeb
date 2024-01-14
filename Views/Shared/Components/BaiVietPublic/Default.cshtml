@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using MangXaHoiWeb.ViewModels
+@model List<BaiVietNguoiDung>
+@foreach (var item in Model)
+{
+    <div class="post-container">
+        <div class="post-row">
+            <div class="user-profile">
+                <img src="~/images/profile/@Html.DisplayFor(modelItem => item.nguoiDung.AnhDaiDien)" alt="Image">
+                <div>
+                    <p>@item.nguoiDung.TenNguoiDung</p>
+                    <span>@item.baiViet.ThoiGianDangBai</span>
+                </div>
+            </div>
+            <a href="#"><i class="fa-solid fa-ellipsis-v"></i></a>
+        </div>
+        <p class="post-text">@Html.Raw(item.baiViet.NoiDung)</p>
+        <img src="~/images/post/@Html.DisplayFor(modelItem => item.baiViet.Anh)" alt="Red dot" class="post-img" />
+        <div class="post-row">
+            <div class="activity-icons">
+                <div><img src="~/assets/images/like-blue.png"> 120</div>
+                <div><img src="~/assets/images/comments.png"> 45</div>
+                <div><img src="~/assets/images/share.png"> 20</div>
+
+            </div>
+            <div class="post-profile-icon">
+                <img src="~/assets/images/profile-pic.png"> <i class="fa-solid fa-caret-down"></i>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const commentButtons = document.querySelectorAll('.comment-btn');
+
+        commentButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                const repliesContainer = this.parentElement.querySelector('.replies');
+                repliesContainer.classList.toggle('show-replies');
+            });
+        });
+    });
+</script>
